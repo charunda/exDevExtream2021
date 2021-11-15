@@ -1,0 +1,31 @@
+//แก้ไขบัตรของขวัญ
+    case SavelistCouponAction.EDIT_GIFT_CARD: {
+      const { data, prevId } = e.payload;
+      const tmpData = state.dxGiftCard;
+      /* กรณีแก้ไขแล้วมีอยู่แล้ว */
+      if (prevId !== data.id) {
+        //ลบค่าเก่าตัวมันเองออกไปก่อน
+        const removePrevId = tmpData.filter(item => item.id !== prevId)
+        const indexOfItem = removePrevId.findIndex((arr) => arr.id === data.id);
+
+        //หาค่าเก่าออกมาบวก
+        const prevData = removePrevId[indexOfItem]
+        //รวมผลเมื่อแก้ไขกับค่าเก่า
+        const upDateField = {
+          id: data.id,
+          giftCardCode: prevData.giftCardCode,
+          amountPerBook: prevData.amountPerBook + data.amountPerBook,
+          amountBook: prevData.amountBook + data.amountBook,
+          valueGiftCard: prevData.valueGiftCard + data.valueGiftCard,
+          totalBook: prevData.valueGiftCard,
+          totalValue: prevData.totalValue + data.totalValue,
+          giftCardStyle: prevData.giftCardStyle
+        }
+        removePrevId.splice(indexOfItem, 1, upDateField);
+        return { ...state, dxGiftCard: [...removePrevId] }
+      }
+      else {
+        const indexOfItem = tmpData.findIndex((arr) => arr.id === data.id);
+        tmpData.splice(indexOfItem, 1, data);
+        return { ...state, dxGiftCard: [...tmpData] };
+      }
