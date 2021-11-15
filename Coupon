@@ -29,3 +29,24 @@
         tmpData.splice(indexOfItem, 1, data);
         return { ...state, dxGiftCard: [...tmpData] };
       }
+
+
+ // const isExist = tmpData.some(item => item.id === data.id)
+      // if (isExist === true) {
+      //   const indexOfItem = tmpData.findIndex((arr) => arr.id === data.id);
+      //   const prevData = tmpData[indexOfItem]
+      //   const upDateField = {
+      //     id: prevData.id,
+      //     giftCardCode: prevData.giftCardCode,
+      //     amountPerBook: prevData.amountPerBook + data.amountPerBook,
+      //     amountBook: prevData.amountBook + data.amountBook,
+      //     valueGiftCard: prevData.valueGiftCard + data.valueGiftCard,
+      //     totalBook: prevData.valueGiftCard,
+      //     totalValue: prevData.totalValue + data.totalValue,
+      //     giftCardStyle: prevData.giftCardStyle
+      //   }
+      //   tmpData.splice(indexOfItem, 1, upDateField);
+      //   return { ...state, dxGiftCard: [...tmpData] }
+      // } else {
+      //   return { ...state, dxGiftCard: [...state.dxGiftCard, data] };
+      // }
